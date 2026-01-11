@@ -37,7 +37,7 @@ ROOT_URLCONF = 'bloodconnect_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,8 +99,8 @@ GOOGLE_SHEETS = {
     'BLOOD_STOCK': 'BloodStock',
 }
 
-LOGIN_URL = 'bloodconnect_project:login'
-LOGIN_REDIRECT_URL = 'bloodconnect_project:dashboard'
-LOGOUT_REDIRECT_URL = 'bloodconnect_project:homepage'
+LOGIN_URL = 'bloodconnect:login'
+LOGIN_REDIRECT_URL = 'bloodconnect:dashboard'
+LOGOUT_REDIRECT_URL = 'bloodconnect:homepage'
 
 
