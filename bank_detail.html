@@ -1,0 +1,33 @@
+{% extends 'bloodconnect/base.html' %}
+
+{% block title %}{{ bank.name }} - BloodConnect{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3>{{ bank.name }}</h3>
+    </div>
+    <div class="card-body">
+        <p><strong>City:</strong> {{ bank.city }}</p>
+        <p><strong>Address:</strong> {{ bank.address }}</p>
+        <p><strong>Phone:</strong> {{ bank.phone }}</p>
+        {% if bank.email %}
+            <p><strong>Email:</strong> {{ bank.email }}</p>
+        {% endif %}
+        
+        <h4>Blood Stock</h4>
+        <ul class="list-group">
+            {% for stock in stocks %}
+                <li class="list-group-item">
+                    {{ stock.blood_group }}: {{ stock.quantity }} units ({{ stock.price_per_unit }} per unit)
+                    {% if stock.is_available %}
+                        <span class="badge bg-success">Available</span>
+                    {% else %}
+                        <span class="badge bg-secondary">Unavailable</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
