@@ -1,0 +1,25 @@
+{% extends 'bloodconnect/base.html' %}
+
+{% block title %}Dashboard - BloodConnect{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ blood_bank.name }}</h2>
+<p>Manage your blood stock below.</p>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        {% for item in stock_forms %}
+            <div class="col-md-6 mb-3">
+                <div class="card stock-card">
+                    <div class="card-body">
+                        <h5>{{ item.blood_group }}</h5>
+                        {{ item.form.as_p }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-danger">Update Stocks</button>
+</form>
+{% endblock %}
