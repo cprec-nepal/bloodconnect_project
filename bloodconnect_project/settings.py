@@ -15,7 +15,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bloodconnect.apps.BloodconnectConfig',
+
+    'bloodconnect_project.apps.donors',
 ]
 
 MIDDLEWARE = [
