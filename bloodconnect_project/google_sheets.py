@@ -1,5 +1,5 @@
 """
-Google Sheets Integration for BloodConnect
+Google Sheets Integration for BloodConnect_project
 
 This module handles synchronization of application data to Google Sheets.
 """
