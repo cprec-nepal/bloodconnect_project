@@ -1,0 +1,81 @@
+{% extends 'bloodconnect/base.html' %}
+
+{% block title %}Home - BloodConnect{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <h1 class="display-4 text-danger mb-4">Find Blood, Save Lives</h1>
+        <p class="lead">Connect with verified blood banks and donors in your area.</p>
+
+        <!-- Search Form -->
+        <form method="get" class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-5">
+                    <input type="text" name="city" class="form-control" placeholder="Enter city" value="{{ city }}">
+                </div>
+                <div class="col-md-4">
+                    <select name="blood_group" class="form-control">
+                        <option value="">All Blood Groups</option>
+                        <option value="A+" {% if blood_group == 'A+' %}selected{% endif %}>A+</option>
+                        <option value="A-" {% if blood_group == 'A-' %}selected{% endif %}>A-</option>
+                        <option value="B+" {% if blood_group == 'B+' %}selected{% endif %}>B+</option>
+                        <option value="B-" {% if blood_group == 'B-' %}selected{% endif %}>B-</option>
+                        <option value="AB+" {% if blood_group == 'AB+' %}selected{% endif %}>AB+</option>
+                        <option value="AB-" {% if blood_group == 'AB-' %}selected{% endif %}>AB-</option>
+                        <option value="O+" {% if blood_group == 'O+' %}selected{% endif %}>O+</option>
+                        <option value="O-" {% if blood_group == 'O-' %}selected{% endif %}>O-</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-danger w-100">Search</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Blood Banks -->
+        <h2 class="mb-3">Available Blood Banks</h2>
+        {% if blood_banks %}
+            <div class="row">
+                {% for bank in blood_banks %}
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ bank.name }}</h5>
+                            <p class="card-text">{{ bank.city }} - {{ bank.address }}</p>
+                            <p class="card-text"><strong>Phone:</strong> {{ bank.phone }}</p>
+                            <a href="{% url 'bloodconnect:bank_detail' bank.id %}" class="btn btn-outline-danger">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-muted">No blood banks found matching your criteria.</p>
+        {% endif %}
+    </div>
+
+    <!-- SOS Requests Sidebar -->
+    <div class="col-lg-4">
+        <h3 class="text-danger mb-3">Urgent SOS Requests</h3>
+        {% if sos_requests %}
+            {% for sos in sos_requests %}
+            <div class="card sos-card mb-3">
+                <div class="card-body">
+                    <h6 class="card-title">{{ sos.requester_name }}</h6>
+                    <p class="card-text">
+                        <span class="badge bg-danger">{{ sos.blood_group }}</span> in {{ sos.city }}
+                    </p>
+                    <p class="card-text">{{ sos.phone }}</p>
+                    {% if sos.urgency_notes %}
+                        <small class="text-muted">{{ sos.urgency_notes }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">No active SOS requests.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
