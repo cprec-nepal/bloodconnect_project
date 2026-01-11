@@ -99,8 +99,8 @@ GOOGLE_SHEETS = {
     'BLOOD_STOCK': 'BloodStock',
 }
 
-LOGIN_URL = 'bloodconnect:login'
-LOGIN_REDIRECT_URL = 'bloodconnect:dashboard'
-LOGOUT_REDIRECT_URL = 'bloodconnect:homepage'
+LOGIN_URL = 'bloodconnect_project:login'
+LOGIN_REDIRECT_URL = 'bloodconnect_project:dashboard'
+LOGOUT_REDIRECT_URL = 'bloodconnect_project:homepage'
 
 
