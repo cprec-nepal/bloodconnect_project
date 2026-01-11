@@ -1,5 +1,11 @@
-from django.apps import AppConfig
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
-class BloodconnectConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'bloodconnect'
+    'apps.donors',
+    'apps.users',
+]
