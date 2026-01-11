@@ -1,0 +1,30 @@
+{% extends 'bloodconnect/base.html' %}
+
+{% block title %}Find Blood Banks on Map - BloodConnect{% endblock %}
+
+{% block extra_head %}
+<script src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_API_KEY }}"></script>
+{% endblock %}
+
+{% block content %}
+<h2>Blood Bank Locations</h2>
+<div id="map" class="map-container"></div>
+
+<script>
+function initMap() {
+    const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: { lat: 20.5937, lng: 78.9629 }  // Default to India center
+    });
+
+    {% for bank in blood_banks %}
+        new google.maps.Marker({
+            position: { lat: {{ bank.latitude|default:0 }}, lng: {{ bank.longitude|default:0 }} },
+            map: map,
+            title: '{{ bank.name }}'
+        });
+    {% endfor %}
+}
+google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+{% endblock %}
