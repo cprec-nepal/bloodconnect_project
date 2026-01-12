@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = 'bloodconnect'
+app_name = 'bloodconnect_project'
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
@@ -15,4 +15,3 @@ urlpatterns = [
     path('bank/<int:bank_id>/', views.bank_detail, name='bank_detail'),
     path('api/blood-banks/', views.api_blood_banks, name='api_blood_banks'),
 ]
-
