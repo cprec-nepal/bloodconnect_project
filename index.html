@@ -6,58 +6,81 @@ BloodConnect | Donate Blood, Save Lives
 {% endblock %}
 
 {% block content %}
-<section class="hero-section" style="text-align:center; padding:60px 20px;">
+
+<section style="text-align:center; padding:60px 20px;">
     <h1 style="color:#b11226;">Donate Blood. Save Lives.</h1>
-    <p style="max-width:700px; margin:20px auto; font-size:1.1rem; color:#555;">
-        BloodConnect connects voluntary blood donors with patients and
-        blood banks when every second matters.
+    <p style="max-width:720px; margin:20px auto; font-size:1.1rem; color:#555;">
+        BloodConnect connects voluntary blood donors, patients,
+        and blood banks to save lives during emergencies.
     </p>
 
-    <div style="margin-top:30px;">
+    <!-- MAIN ACTION BUTTONS -->
+    <div style="margin-top:35px;">
         <a href="{% url 'donors' %}"
-           style="padding:12px 26px; background:#b11226; color:#fff;
-                  text-decoration:none; border-radius:5px; font-weight:bold;">
+           class="btn btn-danger">
             Become a Donor
         </a>
 
+        <a href="{% url 'search-donor' %}"
+           class="btn btn-dark">
+            Find Blood
+        </a>
+
         <a href="{% url 'bank-detail' %}"
-           style="padding:12px 26px; background:#444; color:#fff;
-                  text-decoration:none; border-radius:5px; font-weight:bold;
-                  margin-left:10px;">
-            Blood Bank Details
+           class="btn btn-secondary">
+            Blood Banks
         </a>
     </div>
 </section>
 
-<hr style="max-width:900px; margin:60px auto;">
+<hr>
 
-<section class="info-section" style="max-width:1100px; margin:auto; padding:0 20px;">
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:25px;">
+<!-- FEATURE CARDS -->
+<section style="max-width:1100px; margin:auto; padding:40px 20px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px;">
 
-        <div class="info-card">
-            <h3 style="color:#b11226;">Why Donate Blood?</h3>
-            <p>
-                One blood donation can save up to three lives.
-                Your contribution ensures hospitals never run out of blood.
-            </p>
+        <div class="card p-3">
+            <h4 style="color:#b11226;">Register as Donor</h4>
+            <p>Join our donor network and help save lives.</p>
+            <a href="{% url 'donors' %}" class="btn btn-outline-danger btn-sm">
+                Register
+            </a>
         </div>
 
-        <div class="info-card">
-            <h3 style="color:#b11226;">Fast Donor Matching</h3>
-            <p>
-                We help patients and blood banks quickly find compatible
-                donors during emergencies.
-            </p>
+        <div class="card p-3">
+            <h4 style="color:#b11226;">Search Blood</h4>
+            <p>Find blood donors quickly by group and location.</p>
+            <a href="{% url 'search-donor' %}" class="btn btn-outline-danger btn-sm">
+                Search
+            </a>
         </div>
 
-        <div class="info-card">
-            <h3 style="color:#b11226;">Community Driven</h3>
-            <p>
-                BloodConnect is built on voluntary participation
-                and trust to serve humanity better.
-            </p>
+        <div class="card p-3">
+            <h4 style="color:#b11226;">Blood Bank Info</h4>
+            <p>View available blood banks and contact details.</p>
+            <a href="{% url 'bank-detail' %}" class="btn btn-outline-danger btn-sm">
+                View Banks
+            </a>
         </div>
 
     </div>
 </section>
+
+<hr>
+
+<!-- AUTH BUTTONS -->
+<section style="text-align:center; padding:30px;">
+    <a href="{% url 'login' %}" class="btn btn-success">
+        Login
+    </a>
+
+    <a href="{% url 'register' %}" class="btn btn-warning">
+        Sign Up
+    </a>
+
+    <a href="{% url 'contact' %}" class="btn btn-info">
+        Contact Us
+    </a>
+</section>
+
 {% endblock %}
