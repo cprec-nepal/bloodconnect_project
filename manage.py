@@ -4,16 +4,13 @@
 import os
 import sys
 
-# pylint: disable=C0415
+# pylint: disable=import-error,C0415
 from django.core.management import execute_from_command_line
 
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bloodconnect_project.settings')
-    try:
-        execute_from_command_line(sys.argv)
-    except Exception as exc:
-        raise exc
+    execute_from_command_line(sys.argv)
 
 if __name__ == '__main__':
     main()
